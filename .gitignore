@@ -1,0 +1,5 @@
+variables.ps1
+wsl.conf
+php.ini
+nginx.conf
+initialize.sh
