@@ -9,7 +9,8 @@ Windos10, Windows11が対象
 ## 使用方法
 ### 1.ソースコードダウンロード
 ```ps1
-git clone 
+cd path/to/dir
+git clone git@github.com:TwilightUncle/PhpDevEnv-for-WSL2.git
 ```
 
 ### 2.設定ファイルの展開と変更
@@ -42,7 +43,8 @@ virtual hostの設定等を行う。  `nginx.conf`は構築した開発環境の
 上記で作成したファイルには、アプリケーションソースの展開等、開発環境上で最初に一度だけ行いたい処理を記述する。
 
 ### 3.構築、ログイン等
-以下のコマンドで開発環境を構築する
+以下のコマンドで開発環境を構築する  
+Dockerは起動中であること  
 ```ps1
 cd /path/to/PhpEnvBuild-for-WSL2
 
