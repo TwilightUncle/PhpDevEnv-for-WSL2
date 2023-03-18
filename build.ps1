@@ -1,3 +1,22 @@
+# 必要ファイルの存在確認
+$require_files = @(
+    "variables.ps1",
+    "server_files\configure\wsl.conf",
+    "server_files\configure\php.ini",
+    "server_files\configure\nginx.conf",
+    "server_files\configure\initialize.sh"
+)
+$err = $false
+foreach ( $filename in $require_files ) {
+    if ( -not (Test-Path $filename) ) {
+        Write-Host "Not found ${filename}" -ForegroundColor Red
+        $err = $true
+    }
+}
+if ($err) {
+    exit
+}
+
 # 設定変数用のps1読み込み
 . .\variables.ps1
 
@@ -29,6 +48,10 @@ if ( -not (Test-Path $wsl_root_dir) ) {
 if ( -not (Test-Path $vm_path) ) {
     wsl --import ${DISTRO_NAME} "C:\wsl\${DISTRO_NAME}" ".\${DISTRO_NAME}.tar.gz"
     wsl -d ${DISTRO_NAME} -e bash /initialize.sh
+} else {
+    Write-Host "${DISTRO_NAME} already exists. Please run the below command." -ForegroundColor DarkYellow
+    Write-Host "wsl --unregister ${DISTRO_NAME}" -ForegroundColor DarkYellow
+    Write-Host "./build.ps1" -ForegroundColor DarkYellow
 }
 
 Remove-item -Recurse "${DISTRO_NAME}.tar.gz"
