@@ -28,6 +28,8 @@ docker image build --build-arg "VSCODE_BIN_PATH=${VSCODE_BIN_PATH}" `
     --build-arg "HOSTNAME=${HOSTNAME}" `
     --build-arg "TZ=${TIME_ZONE}" `
     --build-arg "PHP_VERSION=${PHP_VERSION}" `
+    --build-arg "DB_USER=${DB_USER}" `
+    --build-arg "DB_USER_PASSWORD=${DB_USER_PASSWORD}" `
     -t ${DISTRO_NAME} .
 docker run --name ${DISTRO_NAME} --privileged -td ${DISTRO_NAME}
 docker exec -d ${DISTRO_NAME} apt-get install -y systemctl

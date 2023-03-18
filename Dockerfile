@@ -29,6 +29,13 @@ RUN adduser $DEFAULT_USER && \
     echo $DEFAULT_USER:$DEFAULT_USER_PASSWORD | chpasswd
     # echo root:$DEFAULT_USER_PASSWORD | chpasswd
 
+# DB
+ARG DB_USER
+ARG DB_USER_PASSWORD
+RUN service mysql start && \
+    mysql -uroot -p -e "create user '${DB_USER}'@'localhost' identified by '${DB_USER_PASSWORD}';" && \
+    mysql -uroot -p -e "grant all on *.* to '${DB_USER}'@'localhost';"
+
 # vscode & git
 RUN echo "\n\
 alias code='/mnt${VSCODE_BIN_PATH}'\n\

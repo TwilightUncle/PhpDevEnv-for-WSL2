@@ -8,4 +8,7 @@
 # echo "<?php phpinfo();" > /var/www/html/default/index.php
 # chmod 775 /var/www/html/default/index.php
 
+# mysql -uphp82 -psecret -e "create database default_db;"
+# mysql -uphp82 -psecret -e "create database laravel;"
+
 # composer create-project laravel/laravel /var/www/html/laravel
