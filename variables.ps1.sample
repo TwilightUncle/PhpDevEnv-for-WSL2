@@ -1,3 +1,4 @@
+$WSL_ROOT = "C:\wsl"
 $DISTRO_NAME = "php82"
 $PHP_VERSION = "8.2"
 $TIME_ZONE = "Asia/Tokyo"
