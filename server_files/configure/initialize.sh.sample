@@ -3,6 +3,11 @@
 # git clone等アプリケーションソースを展開するためのスクリプトを記載する
 
 # # 例
+
+# # gitの設定
+# git config --global user.email "you@example.com"
+# git config --global user.name "Your Name"
+
 # mkdir /var/www/html/default
 # chmod 775 /var/www/html/default
 # echo "<?php phpinfo();" > /var/www/html/default/index.php

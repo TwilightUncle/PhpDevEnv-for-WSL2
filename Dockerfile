@@ -1,7 +1,6 @@
 FROM ubuntu:22.04
 
 ARG VSCODE_BIN_PATH
-ARG GIT_BIN_PATH
 ARG DEFAULT_USER
 ARG DEFAULT_USER_PASSWORD
 ARG TZ
@@ -15,6 +14,7 @@ RUN apt-get update && \
     apt-get install -y wget curl unzip vim && \
     apt-get install -y init systemd && \
     apt-get install -y mysql-server && \
+    apt-get install -y git && \
     apt-get install -y nginx && \
     add-apt-repository -y ppa:ondrej/php && \
     apt-get install -y php$PHP_VERSION php$PHP_VERSION-fpm php$PHP_VERSION-mysql php$PHP_VERSION-curl php$PHP_VERSION-xml && \
@@ -39,7 +39,6 @@ RUN service mysql start && \
 # vscode & git
 RUN echo "\n\
 alias code='/mnt${VSCODE_BIN_PATH}'\n\
-alias git='/mnt${GIT_BIN_PATH}'\n\
 " >> /home/$DEFAULT_USER/.bashrc
 
 # wsl
